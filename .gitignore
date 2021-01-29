@@ -12,7 +12,7 @@ build/*
 #   |_0     (split size)
 #   |_8     (split size)
 #   |_16    (split size)
-graphics_raw/
+graphics_raw/*
 
 # cartridge rom
 testGBA/interface/ROM.gba
