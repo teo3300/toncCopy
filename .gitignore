@@ -1,0 +1,22 @@
+# build folder conent (useless)
+build/*
+
+# removing raw image data: (folder tree:)
+# graphics_raw
+# |_4   (bpp)
+# | |_0     (split size)
+# | |_8     (split size)
+# | |_16    (split size)
+# |
+# |_8   (bpp)
+#   |_0     (split size)
+#   |_8     (split size)
+#   |_16    (split size)
+graphics_raw/
+
+# cartridge rom
+testGBA/interface/ROM.gba
+testGBA/interface/tests/
+
+# script alreadyp resent in another repo
+testGBA/interface/bmp2c/

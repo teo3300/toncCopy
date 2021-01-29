@@ -1,0 +1,19 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "shell",
+            "label": "GBA ROM build",
+            "command": "./debug",
+            "args": [],
+            "options": {
+                "cwd": "/home/rogora/progettiGBA/testGBA/interface"
+            },
+            "problemMatcher":["$gcc"],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
+    ]
+}

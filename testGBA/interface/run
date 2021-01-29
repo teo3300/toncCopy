@@ -1,0 +1,4 @@
+#!/bin/bash
+set -e
+vbam -F ROM.gba
+clear

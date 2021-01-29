@@ -1,0 +1,18 @@
+#!/bin/bash
+
+#stops if error occurs
+set -e
+
+#set global variables for compiler
+export DEVKITPRO='/opt/devkitpro'
+export DEVKITARM='/opt/devkitpro/devkitARM'
+export DEVKITPPC='/opt/devkitpro/devkitPPC'
+
+#run make and copy result in the Interface directory
+cd ./../../
+make
+cp -f "./toncCopy.gba" "./testGBA/interface/ROM.gba"
+rm -f "./toncCopy.elf" "./toncCopy.gba"
+
+#success
+exit 0

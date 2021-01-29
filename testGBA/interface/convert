@@ -1,0 +1,36 @@
+#!/bin/bash
+
+set -e
+
+H_DEST=../../data_header
+C_DEST=../../data_source
+IMG_SOURCE=../../graphics_raw
+
+if [ ! -d "./tMPconvert" ]; then
+    mkdir tMPconvert
+fi
+# only if does not exists (previous error)
+TMP=tMPconvert
+
+for bpp in $IMG_SOURCE/*; do
+    for split in $bpp/*; do
+        for file in $split/*; do
+            if [ -f "$file" ]; then
+                python 'bmp2c/bmp2c.py' $file "$TMP" $(basename $bpp) $(basename $split)
+            fi
+        done
+    done
+done
+# convert image
+
+for header in $TMP/*.h; do
+    mv $header $H_DEST/$(basename $header)
+done
+# move all header file
+
+for source in $TMP/*.c; do
+    mv $source $C_DEST/$(basename $source)
+done
+# move all header file
+
+rm -rf "$TMP"
