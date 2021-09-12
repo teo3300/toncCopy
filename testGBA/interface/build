@@ -8,11 +8,19 @@ export DEVKITPRO='/opt/devkitpro'
 export DEVKITARM='/opt/devkitpro/devkitARM'
 export DEVKITPPC='/opt/devkitpro/devkitPPC'
 
+#create image sources if necessary
+for file in ../../graphics_raw/*.bmp; do
+    base_name=$(basename $file)
+    base_name="${base_name%.*}"
+    IFS='-'
+    read -ra ADDR <<< "$base_name"
+    base_name="${ADDR[0]}"
+    make ../../data_source/"$base_name".c
+done
+
 #run make and copy result in the Interface directory
 cd ./../../
 make
-cp -f "./toncCopy.gba" "./testGBA/interface/ROM.gba"
-rm -f "./toncCopy.elf" "./toncCopy.gba"
 
 #success
 exit 0

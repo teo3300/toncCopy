@@ -60,8 +60,8 @@ void obj_test(){
 }
 
 int main(){
-    memcpy(&tile_mem[4][0], sprite_test_4bpp_data, sprite_test_4bpp_size);          // put tile in the lowest mem
-    memcpy(pal_obj_mem, sprite_test_4bpp_palette, sprite_test_4bpp_palette_size);   // put palette in palette mem
+    memcpy(&tile_mem[4][0], sprite_test_canvas_data, sprite_test_canvas_byte_size); // put tile in the lowest mem
+    memcpy(pal_obj_mem, sprite_test_palette_data, sprite_test_palette_byte_size);   // put palette in palette mem
 
     oam_init(obj_buffer, 128);    // clear (init all sprite attributes) // just use 128 to clear em all
     REG_DISPCNT = DCNT_OBJ | DCNT_OBJ_1D;

@@ -6,31 +6,22 @@ H_DEST=../../data_header
 C_DEST=../../data_source
 IMG_SOURCE=../../graphics_raw
 
-if [ ! -d "./tMPconvert" ]; then
-    mkdir tMPconvert
+if [ ! -d "./tmpDir" ]; then
+    mkdir "tmpDir"
 fi
-# only if does not exists (previous error)
-TMP=tMPconvert
 
-for bpp in $IMG_SOURCE/*; do
-    for split in $bpp/*; do
-        for file in $split/*; do
-            if [ -f "$file" ]; then
-                python 'bmp2c/bmp2c.py' $file "$TMP" $(basename $bpp) $(basename $split)
-            fi
-        done
-    done
-done
-# convert image
+NAME=$(basename $1)
+NAME="${NAME%.*}"
+IFS='-'
+read -ra ADDR <<< "$NAME"
+base_name="${ADDR[0]}"
+bit_depth="${ADDR[1]}"
+do_split="${ADDR[2]}"
+hsplit="${ADDR[3]}"
+vsplit="${ADDR[4]}"
 
-for header in $TMP/*.h; do
-    mv $header $H_DEST/$(basename $header)
-done
-# move all header file
+echo $base_name $bit_depth $do_split $hsplit $vsplit
+./bmp4c "$1" tmpDir/"$base_name".c "$bit_depth" "$do_split" "$hsplit" "$vsplit"
 
-for source in $TMP/*.c; do
-    mv $source $C_DEST/$(basename $source)
-done
-# move all header file
-
-rm -rf "$TMP"
+mv tmpDir/"$base_name".c "$C_DEST"/"$base_name".c
+mv tmpDir/"$base_name".h "$H_DEST"/"$base_name".h

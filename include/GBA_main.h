@@ -23,6 +23,6 @@ extern OBJ_ATTR obj_buffer[OBJ_BUFFER_SIZE];
 extern OBJ_AFFINE* obj_aff_buffer;
 
 // Include data files
-#include "sprite_test_4bpp.h"
+#include "../data_header/sprite_test.h"
 
 #endif // GBA_MAIN_H

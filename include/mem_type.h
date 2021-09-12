@@ -4,12 +4,12 @@
 // definitions for data type
 #define INLINE static inline
 
-#define s8   signed   char
-#define s16  signed   short
-#define s32  signed   int
+#define s8   signed char
+#define s16  signed short
+#define s32  signed long int
 #define u8   unsigned char
 #define u16  unsigned short
-#define u32  unsigned int
+#define u32  unsigned long int
 #define vu8  volatile u8
 #define vu16 volatile u16
 #define vu32 volatile u32

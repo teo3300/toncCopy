@@ -1,0 +1,9 @@
+#!/bin/bash
+
+set -e
+rm -f ../../data_source/*.c
+rm -f ../../data_header/*.h
+PWD=$(pwd)
+cd ../../
+make clean
+cd $PWD
